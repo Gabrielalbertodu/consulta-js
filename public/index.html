@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda SUS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Agenda SUS</h1>
+
+    <section class="card">
+      <h2>Agendar consulta</h2>
+      <form id="appointmentForm">
+        <label>Nome completo<input type="text" name="nome" required /></label>
+        <label>CPF<input type="text" name="cpf" maxlength="14" required placeholder="000.000.000-00" /></label>
+        <label>Data da consulta<input type="date" name="data" required /></label>
+        <label>Horário<input type="time" name="horario" required /></label>
+        <label>Posto de saúde
+          <select name="posto" required>
+            <option value="">Selecione</option>
+            <option value="UBS Central">UBS Central</option>
+            <option value="UBS Vila Nova">UBS Vila Nova</option>
+            <option value="UBS Jardim">UBS Jardim</option>
+          </select>
+        </label>
+        <button type="submit">Agendar</button>
+      </form>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>Agendamentos</h2>
+      <div id="appointmentsList" class="appointments-list"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
