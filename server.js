@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const db = new sqlite3.Database(path.join(__dirname, 'agenda.db'));
+const db = new sqlite3.Database(path.join(__dirname, 'agenda.sqlite'));
 
 db.serialize(() => {
   db.run(`
