@@ -20,12 +20,16 @@
         <label>Posto de saúde
           <select name="posto" required>
             <option value="">Selecione</option>
-            <option value="UBS Central">UBS Central</option>
+            <option value="UBS Central">UBS 01 ceilândia</option>
             <option value="UBS Vila Nova">UBS 10 ceilândia</option>
             <option value="UBS Jardim">UBS 02 ceilândia</option>
+            <option value="outra">Outra (entrar em contato com suporte para cadastrar)</option>
           </select>
         </label>
-        <button type="submit">Agendar</button>
+        <div class="form-actions">
+          <button type="submit">Agendar</button>
+          <button type="button" id="cancelEdit" hidden>Cancelar</button>
+        </div>
       </form>
       <p id="message" class="message"></p>
     </section>
