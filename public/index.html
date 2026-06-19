@@ -4,25 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda SUS</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="container">
-    <h1>Agenda SUS</h1>
+    <header class="app-header">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <h1>Agenda SUS</h1>
+    </header>
 
     <section class="card">
       <h2>Agendar consulta</h2>
       <form id="appointmentForm">
         <label>Nome completo<input type="text" name="nome" required /></label>
         <label>CPF<input type="text" name="cpf" maxlength="14" required placeholder="000.000.000-00" /></label>
-        <label>Data da consulta<input type="date" name="data" required /></label>
+        <label>Data da consulta<input type="date" name="data" min="2026-01-01" max="2030-12-31" required /></label>
         <label>Horário<input type="time" name="horario" required /></label>
         <label>Posto de saúde
           <select name="posto" required>
             <option value="">Selecione</option>
-            <option value="UBS Central">UBS 01 ceilândia</option>
-            <option value="UBS Vila Nova">UBS 10 ceilândia</option>
-            <option value="UBS Jardim">UBS 02 ceilândia</option>
+            <option value="UBS 01 ceilândia">UBS 01 ceilândia</option>
+            <option value="UBS 10 ceilândia">UBS 10 ceilândia</option>
+            <option value="UBS 02 ceilândia">UBS 02 ceilândia</option>
             <option value="outra">Outra (entrar em contato com suporte para cadastrar)</option>
           </select>
         </label>

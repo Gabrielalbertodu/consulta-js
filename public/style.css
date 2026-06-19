@@ -1,117 +1,363 @@
 :root {
-  font-family: Arial, sans-serif;
-  background: #eef2f7;
-  color: #1d2939;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  
+
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --bg-app: #f8fafc;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  
+
+  --green-bg: #dcfce7; --green-text: #15803d; --green-border: #bbf7d0;
+  --red-bg: #fee2e2; --red-text: #b91c1c; --red-border: #fca5a5;
+  --blue-bg: #eff6ff; --blue-text: #1d4ed8; --blue-border: #bfdbfe;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
+  background-color: var(--bg-app);
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-  max-width: 760px;
-  padding: 24px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-h1,
-h2 {
-  margin: 0 0 16px;
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 2px solid var(--border-color);
 }
+
+.app-header i {
+  font-size: 2.4rem;
+  color: var(--primary);
+  filter: drop-shadow(0 4px 6px rgba(2, 132, 199, 0.2));
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+.app-header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #0f172a 30%, #0284c7 100%);
+  -webkit-background-clip: text; /* Compatibilidade com navegadores antigos */
+  background-clip: text;         /* CORREÇÃO DO AVISO: Propriedade padrão adicionada */
+  -webkit-text-fill-color: transparent;
+}
+
 
 .card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 36px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.02), 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card h2::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 22px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
 
 form {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+
+form label:nth-of-type(1),
+form label:nth-of-type(5),
+.form-actions {
+  grid-column: span 2;
 }
 
 label {
   display: flex;
   flex-direction: column;
-  font-size: 0.95rem;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
 }
 
+
 input,
-select,
-button {
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 10px 12px;
+select {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 18px;
   font-size: 1rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
 
 button {
   cursor: pointer;
-  background: #2563eb;
-  color: white;
+  border-radius: 12px;
+  padding: 16px 28px;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
-  transition: background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-  background: #1d4ed8;
+button[type="submit"] {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+button[type="submit"]:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+button[type="submit"].btn-editing {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
 }
 
 .form-actions {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 #cancelEdit {
-  background: #6b7280;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid var(--border-color);
+}
+
+#cancelEdit:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.message:not(:empty) {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.msg-success { background: var(--green-bg); color: var(--green-text); border-color: var(--green-border); }
+.msg-error { background: var(--red-bg); color: var(--red-text); border-color: var(--red-border); }
+.msg-edit { background: var(--blue-bg); color: var(--blue-text); border-color: var(--blue-border); }
+
+.appointments-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+
+.no-data {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px;
+  color: #94a3b8;
+}
+.no-data i {
+  font-size: 3rem;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Cartões de Agendamentos Individuais */
+.appointment-item {
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition: all 0.25s ease;
+}
+
+.appointment-item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.appointment-item strong {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.appointment-item span {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  margin: 6px 0;
+  color: #334155;
+}
+
+.appointment-item span i {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.appointment-item .timestamp {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 4px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 12px;
 }
 
 .appointment-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
 }
 
 .appointment-actions button {
-  padding: 8px 10px;
-  font-size: 0.95rem;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  flex: 1;
+  border-radius: 10px;
 }
 
 .edit-btn {
-  background: #fbbf24;
-  color: #1f2937;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.edit-btn:hover {
+  background: #dcfce7;
+  color: #14532d;
 }
 
 .delete-btn {
-  background: #ef4444;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
 }
 
-.message {
-  margin-top: 12px;
-  font-weight: 600;
+.delete-btn:hover {
+  background: #fee2e2;
+  color: #7f1d1d;
 }
 
-.appointments-list {
-  display: grid;
-  gap: 12px;
+/* Animações Modernas */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
 }
 
-.appointment-item {
-  padding: 14px;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  background: #f8fafc;
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.appointment-item span {
-  display: block;
-  margin: 4px 0;
+/* Responsividade de Alto Nível (Telas mobile) */
+@media (max-width: 720px) {
+  form {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  form label:nth-of-type(1),
+  form label:nth-of-type(5),
+  .form-actions {
+    grid-column: span 1;
+  }
+  .appointments-list {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 24px;
+  }
+  body {
+    padding: 20px 10px;
+  }
 }
